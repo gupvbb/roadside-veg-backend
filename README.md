@@ -1,4 +1,4 @@
-ROADGREEN - Desenvolvilmento de uma API REST para monitoramento da vegetação de rodovias 
+ROADGREEN - Desenvolvimento de uma API REST para monitoramento da vegetação de rodovias 
 
 ---
 
