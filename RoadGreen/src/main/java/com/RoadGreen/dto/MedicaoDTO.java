@@ -3,6 +3,7 @@ package com.RoadGreen.dto;
 import java.time.LocalDateTime;
 
 import com.RoadGreen.model.Medicao;
+import com.RoadGreen.model.StatusVegetacao;
 
 public class MedicaoDTO {
 
@@ -18,6 +19,10 @@ public class MedicaoDTO {
     private LocalDateTime dataColeta;
     private String sensorId;
     private String observacoes;
+
+    // ✅ NOVO: status calculado da área após a medição
+    private StatusVegetacao statusArea;
+    private String statusDescricao;
 
     public MedicaoDTO() {
     }
@@ -35,6 +40,9 @@ public class MedicaoDTO {
         this.dataColeta = medicao.getDataColeta();
         this.sensorId = medicao.getSensorId();
         this.observacoes = medicao.getObservacoes();
+
+        this.statusArea = medicao.getArea().getStatus();
+        this.statusDescricao = medicao.getArea().getStatus().getDescricao();
     }
 
     public Long getId() {
@@ -131,5 +139,21 @@ public class MedicaoDTO {
 
     public void setObservacoes(String observacoes) {
         this.observacoes = observacoes;
+    }
+
+    public StatusVegetacao getStatusArea() {
+        return statusArea;
+    }
+
+    public void setStatusArea(StatusVegetacao statusArea) {
+        this.statusArea = statusArea;
+    }
+
+    public String getStatusDescricao() {
+        return statusDescricao;
+    }
+
+    public void setStatusDescricao(String statusDescricao) {
+        this.statusDescricao = statusDescricao;
     }
 }

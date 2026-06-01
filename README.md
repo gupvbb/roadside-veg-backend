@@ -56,6 +56,20 @@ O projeto segue o padrão em camadas:
 - DTO - controlar o que entra e sai da API: 
 ---
 
+## Cálculo de Status da Vegetação
+
+Ao registrar uma medição, o sistema calcula automaticamente o status da área com base em dois parâmetros: **densidade da vegetação** e **altura da vegetação**.
+
+| Status | Densidade | Altura | Próxima Intervenção |
+|--------|-----------|--------|-------------------|
+| 🟢 **NORMAL** | até 50% | até 1.0m | 30 dias |
+| 🟡 **ATENÇÃO** | 51% a 70% | 1.01m a 1.5m | 15 dias |
+| 🔴 **URGENTE** | acima de 70% | acima de 1.5m | 7 dias |
+
+> O status é atualizado automaticamente toda vez que uma medição é registrada ou simulada. Basta **uma** das condições ser verdadeira para o status ser aplicado (densidade **OU** altura).
+ 
+---
+
 ##  Endpoints da API
 
 ### 📍 Área
@@ -63,8 +77,7 @@ O projeto segue o padrão em camadas:
 - `POST /areas` → Criar área
 - `GET /areas` → Listar áreas
 - `GET /areas/{id}` → Buscar por ID
-- `PUT /areas/{id}` → Atualizar
-- `DELETE /areas/{id}` → Deletar
+
 
 ---
 
@@ -73,10 +86,19 @@ O projeto segue o padrão em camadas:
 - `POST /medicoes` → Criar medição
 - `GET /medicoes` → Listar medições
 - `GET /medicoes/{id}` → Buscar por ID
-- `PUT /medicoes/{id}` → Atualizar
-- `DELETE /medicoes/{id}` → Deletar
 
 ---
+
+## Como testar
+
+### 1. Rodando o projeto
+
+Execute o projeto pelo IntelliJ ou via terminal:
+
+```bash
+./mvnw spring-boot:run
+```
+A API estará disponível em: `http://localhost:8080/h2-console`
 
 ##  Banco de Dados
 
