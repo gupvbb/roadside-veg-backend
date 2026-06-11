@@ -3,6 +3,7 @@ package com.RoadGreen.dto;
 import java.time.LocalDateTime;
 
 import com.RoadGreen.model.Medicao;
+import com.RoadGreen.model.StatusMedicao;
 import com.RoadGreen.model.StatusVegetacao;
 
 public class MedicaoDTO {
@@ -19,8 +20,8 @@ public class MedicaoDTO {
     private LocalDateTime dataColeta;
     private String sensorId;
     private String observacoes;
+    private StatusMedicao status;
 
-    // ✅ NOVO: status calculado da área após a medição
     private StatusVegetacao statusArea;
     private String statusDescricao;
 
@@ -41,119 +42,65 @@ public class MedicaoDTO {
         this.sensorId = medicao.getSensorId();
         this.observacoes = medicao.getObservacoes();
 
+        this.status = medicao.getStatus();
+        this.statusDescricao = medicao.getStatus() != null ? medicao.getStatus().getDescricao() : null;
+
         this.statusArea = medicao.getArea().getStatus();
         this.statusDescricao = medicao.getArea().getStatus().getDescricao();
     }
 
-    public Long getId() {
-        return id;
-    }
+    // Getters e Setters
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public Long getAreaId() { return areaId; }
+    public void setAreaId(Long areaId) { this.areaId = areaId; }
 
-    public Long getAreaId() {
-        return areaId;
-    }
 
-    public void setAreaId(Long areaId) {
-        this.areaId = areaId;
-    }
+    public String getAreaCodigo() { return areaCodigo; }
+    public void setAreaCodigo(String areaCodigo) { this.areaCodigo = areaCodigo; }
 
-    public String getAreaCodigo() {
-        return areaCodigo;
-    }
 
-    public void setAreaCodigo(String areaCodigo) {
-        this.areaCodigo = areaCodigo;
-    }
+    public Double getAlturaVegetacao() { return alturaVegetacao; }
+    public void setAlturaVegetacao(Double alturaVegetacao) { this.alturaVegetacao = alturaVegetacao; }
 
-    public Double getAlturaVegetacao() {
-        return alturaVegetacao;
-    }
 
-    public void setAlturaVegetacao(Double alturaVegetacao) {
-        this.alturaVegetacao = alturaVegetacao;
-    }
+    public Double getDensidade() { return densidade; }
+    public void setDensidade(Double densidade) { this.densidade = densidade; }
 
-    public Double getDensidade() {
-        return densidade;
-    }
 
-    public void setDensidade(Double densidade) {
-        this.densidade = densidade;
-    }
+    public Double getTemperatura() { return temperatura; }
+    public void setTemperatura(Double temperatura) { this.temperatura = temperatura; }
 
-    public Double getTemperatura() {
-        return temperatura;
-    }
 
-    public void setTemperatura(Double temperatura) {
-        this.temperatura = temperatura;
-    }
+    public Double getUmidade() { return umidade; }
+    public void setUmidade(Double umidade) { this.umidade = umidade; }
 
-    public Double getUmidade() {
-        return umidade;
-    }
 
-    public void setUmidade(Double umidade) {
-        this.umidade = umidade;
-    }
+    public String getTipoVegetacao() { return tipoVegetacao; }
+    public void setTipoVegetacao(String tipoVegetacao) { this.tipoVegetacao = tipoVegetacao; }
 
-    public String getTipoVegetacao() {
-        return tipoVegetacao;
-    }
 
-    public void setTipoVegetacao(String tipoVegetacao) {
-        this.tipoVegetacao = tipoVegetacao;
-    }
+    public Double getInclinacaoTerreno() { return inclinacaoTerreno; }
+    public void setInclinacaoTerreno(Double inclinacaoTerreno) { this.inclinacaoTerreno = inclinacaoTerreno; }
 
-    public Double getInclinacaoTerreno() {
-        return inclinacaoTerreno;
-    }
 
-    public void setInclinacaoTerreno(Double inclinacaoTerreno) {
-        this.inclinacaoTerreno = inclinacaoTerreno;
-    }
+    public LocalDateTime getDataColeta() { return dataColeta; }
+    public void setDataColeta(LocalDateTime dataColeta) { this.dataColeta = dataColeta; }
 
-    public LocalDateTime getDataColeta() {
-        return dataColeta;
-    }
 
-    public void setDataColeta(LocalDateTime dataColeta) {
-        this.dataColeta = dataColeta;
-    }
+    public String getSensorId() { return sensorId; }
+    public void setSensorId(String sensorId) { this.sensorId = sensorId; }
 
-    public String getSensorId() {
-        return sensorId;
-    }
 
-    public void setSensorId(String sensorId) {
-        this.sensorId = sensorId;
-    }
+    public String getObservacoes() { return observacoes; }
+    public void setObservacoes(String observacoes) { this.observacoes = observacoes; }
 
-    public String getObservacoes() {
-        return observacoes;
-    }
 
-    public void setObservacoes(String observacoes) {
-        this.observacoes = observacoes;
-    }
+    public StatusMedicao getStatus() { return status; }
+    public void setStatus(StatusMedicao status) { this.status = status; }
 
-    public StatusVegetacao getStatusArea() {
-        return statusArea;
-    }
 
-    public void setStatusArea(StatusVegetacao statusArea) {
-        this.statusArea = statusArea;
-    }
-
-    public String getStatusDescricao() {
-        return statusDescricao;
-    }
-
-    public void setStatusDescricao(String statusDescricao) {
-        this.statusDescricao = statusDescricao;
-    }
+    public String getStatusDescricao() { return statusDescricao; }
+    public void setStatusDescricao(String statusDescricao) { this.statusDescricao = statusDescricao; }
 }

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.RoadGreen.dto.MedicaoDTO;
 import com.RoadGreen.model.AreaRoadGreen;
 import com.RoadGreen.model.Medicao;
+import com.RoadGreen.model.StatusMedicao;
 import com.RoadGreen.repository.AreaRoadGreenRepository;
 import com.RoadGreen.repository.MedicaoRepository;
 
@@ -27,6 +28,20 @@ public class MedicaoService {
     private AreaRoadGreenService areaService;
 
     private final Random random = new Random();
+
+    private StatusMedicao calcularStatus(Double altura, Double densidade) {
+        if (altura == null || densidade == null) {
+            return StatusMedicao.NORMAL;
+        }
+        if (altura > 1.5 || densidade > 70.0) {
+            return StatusMedicao.CRITICO;
+        } else if (altura > 1.0 || densidade > 50.0) {
+            return StatusMedicao.ALERTA;
+        } else {
+            return StatusMedicao.NORMAL;
+        }
+    }
+
 
     public List<MedicaoDTO> listarTodas() {
         return medicaoRepository.findAll()
@@ -54,6 +69,10 @@ public class MedicaoService {
 
         medicao.setArea(area);
         medicao.setDataColeta(LocalDateTime.now());
+
+        StatusMedicao statusCalculado = calcularStatus(medicao.getAlturaVegetacao(), medicao.getDensidade());
+        medicao.setStatus(statusCalculado);
+
         Medicao medicaoSalva = medicaoRepository.save(medicao);
 
         areaService.atualizarStatusArea(areaId, medicao.getDensidade(), medicao.getAlturaVegetacao());
@@ -87,6 +106,9 @@ public class MedicaoService {
         } else {
             medicao.setObservacoes("Condições normais");
         }
+
+        StatusMedicao statusCalculado = calcularStatus(medicao.getAlturaVegetacao(), medicao.getDensidade());
+        medicao.setStatus(statusCalculado);
 
         Medicao medicaoSalva = medicaoRepository.save(medicao);
 
