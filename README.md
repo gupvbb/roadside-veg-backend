@@ -1,33 +1,64 @@
-# 🌿 RoadGreen - API REST
 
-API REST desenvolvida em **Spring Boot** para monitoramento da vegetação em rodovias.
+# 🌿 RoadGreen API
+
+API REST desenvolvida em Spring Boot para o monitoramento de áreas de vegetação próximas a rodovias.
+
+A API é responsável por armazenar, processar e disponibilizar informações das áreas monitoradas e das medições realizadas pelo sistema RoadGreen Mobile.
+
+---
+
+## 👥 Integrantes
+
+- Nicolas Cipriano — RM562278
+- Nicolas Alves — RM561692
+- Gustavo Pereira — RM563280
+- Pedro de Castro — RM561825
+- Thiago Almeida Souza — RM565365
+- Gustavo Henrique — RM563874
 
 ---
 
-##  Objetivo
+# 🎯 Objetivo do sistema
 
-O sistema tem como objetivo simular o monitoramento de áreas rodoviárias utilizando sensores que coletam dados ambientais, auxiliando na prevenção de riscos como excesso de vegetação.
+O RoadGreen tem como objetivo auxiliar no monitoramento da vegetação presente em áreas próximas a rodovias.
+
+A API permite:
+
+- Cadastrar e consultar áreas monitoradas;
+- Registrar medições;
+- Consultar medições;
+- Simular novas coletas;
+- Calcular o status das medições;
+- Atualizar o status das áreas;
+- Disponibilizar os dados para o aplicativo mobile.
 
 ---
-##  Integrantes
 
-- Nicolas Cipriano RM562278
-- Nicolas Alves    RM561692
-- Gustavo Pereira  RM563280
-- Pedro de Castro  RM561825
-- Thiago Almeida   RM565365
-- Gustavo Henrique RM563874
-
----
-##  Tecnologias utilizadas
+# 🛠️ Tecnologias utilizadas
 
 - Java 17
 - Spring Boot
 - Spring Web
 - Spring Data JPA
 - H2 Database
+- Maven
 
 ---
+
+# 🏗️ Arquitetura
+
+O backend utiliza uma organização em camadas:
+
+src/main/java/com/RoadGreen/
+├── config/
+├── controller/
+├── dto/
+├── model/
+├── repository/
+└── service/
+
+---
+
 ##  Conceito de Sensor
 
 No sistema **RoadGreen**, sensores representam dispositivos físicos instalados ao longo das rodovias.
@@ -78,14 +109,6 @@ Ao registrar uma medição, o sistema calcula automaticamente o status da área 
 - `GET /areas` → Listar áreas
 - `GET /areas/{id}` → Buscar por ID
 
-
----
-
-###  Medição
-
-- `POST /medicoes` → Criar medição
-- `GET /medicoes` → Listar medições
-- `GET /medicoes/{id}` → Buscar por ID
 
 ---
 
