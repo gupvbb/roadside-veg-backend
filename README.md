@@ -116,10 +116,16 @@ Ao registrar uma medição, o sistema calcula automaticamente o status da área 
 
 ### 1. Rodando o projeto
 
-Execute o projeto pelo IntelliJ ou via terminal:
+Execute  primeiro o Backend pelo IntelliJ ou via terminal:
 
 ```bash
 ./mvnw spring-boot:run
+```
+
+No terminal do VScode execute:
+```bash
+npm install 
+npx expo start
 ```
 A API estará disponível em: `http://localhost:8080/h2-console`
 
@@ -128,5 +134,16 @@ A API estará disponível em: `http://localhost:8080/h2-console`
 Utilizado **H2 Database** para persistência dos dados.
 
 ---
+## 🔗 Repositórios
+
+### Frontend
+
+**Repositório:**  
+https://github.com/gupvbb/mobile-app-client.git
+
+### Backend
+
+**Repositório:**  
+https://github.com/gupvbb/roadside-veg-backend.git
 
 

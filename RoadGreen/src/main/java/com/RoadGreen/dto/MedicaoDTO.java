@@ -43,10 +43,11 @@ public class MedicaoDTO {
         this.observacoes = medicao.getObservacoes();
 
         this.status = medicao.getStatus();
-        this.statusDescricao = medicao.getStatus() != null ? medicao.getStatus().getDescricao() : null;
+        this.statusDescricao = medicao.getStatus() != null
+                ? medicao.getStatus().getDescricao()
+                : null;
 
         this.statusArea = medicao.getArea().getStatus();
-        this.statusDescricao = medicao.getArea().getStatus().getDescricao();
     }
 
     // Getters e Setters
